@@ -17,7 +17,7 @@ export default function Profile() {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/users?username=${username}`
+          `https://social-media-api-lrkb.onrender.com/api/users?username=${username}`
         );
         setUser(response.data);
       } catch (err) {

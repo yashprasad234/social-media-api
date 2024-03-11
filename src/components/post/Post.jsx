@@ -27,9 +27,12 @@ export default function Post({ post }) {
 
   const likeHandler = async () => {
     try {
-      await axios.put(`http://localhost:3000/api/posts/${post._id}/like`, {
-        userId: currentUser._id,
-      });
+      await axios.put(
+        `https://social-media-api-lrkb.onrender.com/api/posts/${post._id}/like`,
+        {
+          userId: currentUser._id,
+        }
+      );
     } catch (err) {
       console.error(err);
     }

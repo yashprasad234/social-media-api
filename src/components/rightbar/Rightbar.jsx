@@ -26,7 +26,8 @@ export default function Rightbar({ user }) {
     const getFriends = async () => {
       try {
         const friendList = await axios.get(
-          "http://localhost:3000/api/users/friends/" + user._id
+          "https://social-media-api-lrkb.onrender.com/api/users/friends/" +
+            user._id
         );
         setFriends(friendList.data);
       } catch (err) {
@@ -40,16 +41,19 @@ export default function Rightbar({ user }) {
     try {
       if (isFollowed) {
         await axios.put(
-          `http://localhost:3000/api/users/${user._id}/unfollow`,
+          `https://social-media-api-lrkb.onrender.com/api/users/${user._id}/unfollow`,
           {
             userId: currentUser._id,
           }
         );
         dispatch({ type: "UNFOLLOW", payload: user._id });
       } else {
-        await axios.put(`http://localhost:3000/api/users/${user._id}/follow`, {
-          userId: currentUser._id,
-        });
+        await axios.put(
+          `https://social-media-api-lrkb.onrender.com/api/users/${user._id}/follow`,
+          {
+            userId: currentUser._id,
+          }
+        );
         dispatch({ type: "FOLLOW", payload: user._id });
       }
       setIsFollowed(!isFollowed);

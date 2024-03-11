@@ -14,10 +14,10 @@ export default function Feed({ username }) {
       try {
         const res = username
           ? await axios.get(
-              `http://localhost:3000/api/posts/profile/${username}`
+              `https://social-media-api-lrkb.onrender.com/api/posts/profile/${username}`
             )
           : await axios.get(
-              `http://localhost:3000/api/posts/timeline/${user._id}`
+              `https://social-media-api-lrkb.onrender.com/api/posts/timeline/${user._id}`
             );
         setPosts(
           res.data.sort((p1, p2) => {

@@ -23,7 +23,10 @@ export default function Share() {
       desc: desc.current.value,
     };
     try {
-      await axios.post(`http://localhost:3000/api/posts`, newPost);
+      await axios.post(
+        `https://social-media-api-lrkb.onrender.com/api/posts`,
+        newPost
+      );
     } catch (err) {
       console.error(err);
     }
