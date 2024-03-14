@@ -31,10 +31,10 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     try {
-      const user = await User.findByIdAndDelete(req.params.id);
+      await User.findByIdAndDelete(req.params.id);
       res.json("Account has been deleted successfully");
     } catch (err) {
-      return res.status(500).json(err);
+      res.status(500).json(err);
     }
   } else {
     return res.status(403).json("you can only update your account!");
@@ -81,8 +81,6 @@ router.get("/friends/:userId", async (req, res) => {
 // follow a user
 router.put("/:id/follow", async (req, res) => {
   if (req.body.userId !== req.params.id) {
-    console.log(req.params.id);
-    console.log(req.body.userId);
     try {
       const userToFollow = await User.findById(req.params.id);
       const currentUser = await User.findById(req.body.userId);
