@@ -8,6 +8,8 @@ const cors = require("cors");
 const userRoute = require("./router/users.js");
 const authRoute = require("./router/auth.js");
 const postRoute = require("./router/posts.js");
+const conversationRoute = require("./router/conversations.js");
+const messageRoute = require("./router/messages.js");
 
 dotenv.config();
 
@@ -21,6 +23,8 @@ app.use(morgan("common"));
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/posts", postRoute);
+app.use("/api/conversations", conversationRoute);
+app.use("/api/messages", messageRoute);
 
 app.get("/", (req, res) => {
   res.send("Welcome to homepage");
